@@ -1,0 +1,48 @@
+---
+title: "Environmental Performance Indexes"
+author: "Giorgio Garziano"
+date: "February 4th, 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Environmental Performance Indexes
+
+It becomes every day more and more inportant to highlight the world environmental status and human activities impact on sorrounding nature by collecting a pool of performance indicators named as Environmental Performance Indicators (EPI)
+
+Furthermore, visualizing such EPI's in an interactive world map, providing a summary by regions and highlighting best and worst EPI at country level help a lot in having the global picture from the geographical perspective
+
+That is the basic purpose of my proposed Shiny application
+
+Let us spend some words about the available data and its source first
+
+## Dataset available
+
+The **rworldmap** R package provides a dataframe named as *CountryExData* reporting 2008 EPI data made available by 
+
+http://epi.yale.edu/
+
+More specifically, the collected data is one of the results of the project lead by the Yale Center for Environmental Law & Policy (YCELP) and Yale Data-Driven Environmental Solutions Group at Yale University (Data-Driven Yale), the Center for International Earth Science Information Network (CIESIN) at Columbia University, in collaboration with the Samuel Family Foundation, McCall MacBain Foundation, and the World Economic Forum
+
+
+## How my Shiny application works
+
+There are three inputs that can be selected by the end users:
+
+1. the Environmental Performance Index (EPI)
+2. the regions classification type, determining the way countries are grouped in regions
+3. the selection of a top-10 or a bottom-10 countries view
+
+Three outputs are determined by above inputs selection:
+
+1. the interactive map showing with gradient color scales the EPI values at country level
+2. the table showing EPI values at region level, computed as average of the region member countries EPI's
+3. the top-10/bottom-10 countries table as based on selected EPI metric
+
+
+## Shiny Application
+
+![World EPI](Snapshot3.png)
