@@ -10,7 +10,7 @@ colors <- c("gyr", "ryg", "ryg", "gyr", "ryg", "ryg", "ryg", "gyr", "ryb", "ryg"
   "ryg", "gyr", "gyr", "ryb", "gyr", "gyr", "ryg", "ryg", "ryg", "ryg",
   "ryb", "gyr", "gyr", "gyr", "gyr", "gyr", "ryb", "ryb", "gyr", "gyr",
   "ryg", "ryg", "ryb", "ryg", "ryb", "gyr", "byr", "ryg", "ryg", "gyr",
-  "gyr", "gyr", "gyr", "gyr")
+  "ryg", "gyr", "gyr", "gyr")
 
 # description of the EPI appearing in the top-left select input widget
 # redundant fields are taken out by appropriate index selection as done ahead
@@ -177,7 +177,6 @@ shinyServer(function(input, output) {
     idx <- which(description == kpi())
     color_idx <- which(choices_verbose == kpi())
     field <- colnames(countryExData)[idx]
-    print(color_idx)
     myplotly(idx, color_idx, field, kpi())
   })
 
