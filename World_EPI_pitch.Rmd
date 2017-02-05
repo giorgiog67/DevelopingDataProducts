@@ -25,6 +25,11 @@ The **rworldmap** R package provides a dataframe named as *CountryExData* report
 
 http://epi.yale.edu/
 
+```{r, warning=FALSE}
+suppressPackageStartupMessages(library(rworldmap))
+countryExData[1:2, c(1,2,5,12,16)]
+```
+
 More specifically, the collected data is one of the results of the project lead by the Yale Center for Environmental Law & Policy (YCELP) and Yale Data-Driven Environmental Solutions Group at Yale University (Data-Driven Yale), the Center for International Earth Science Information Network (CIESIN) at Columbia University, in collaboration with the Samuel Family Foundation, McCall MacBain Foundation, and the World Economic Forum
 
 
