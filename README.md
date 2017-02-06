@@ -1,3 +1,3 @@
-# DevelopingDataProducts
+# Reproducible Pitch Presentation
 
-see: https://giorgiog67.github.io/DevelopingDataProducts/#1
+https://giorgiog67.github.io/DevelopingDataProducts/#1
