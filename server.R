@@ -1,6 +1,6 @@
-library(shiny)
-library(plotly)
-library(rworldmap)
+suppressPackageStartupMessages(library(shiny))
+suppressPackageStartupMessages(library(plotly))
+suppressPackageStartupMessages(library(rworldmap))
 
 # color scales used in the interactive map for representing EPI scale values
 # depending on the fact that the EPI represent a positive or negative aspect,
@@ -124,7 +124,7 @@ get_color_scale <- function(field_idx) {
   scale_out
 }
 
-# plotly based function to plot the interactive map
+# plotly based function to plot the interactive map reporting countries EPI values
 myplotly <- function(field_idx, color_idx, kpi_field, field_desc) {
   l <- list(color = toRGB("red"), width = 0.5)
   f <- list(family = "Arial New", size = 12, color = "#7f7f7f")
@@ -154,7 +154,7 @@ mydf <- function(field_descr, field, rt) {
   df
 }
 
-# function to cmpute the dataframe showing the top-10/bottom-10 countries 
+# function to compute the dataframe showing the top-10/bottom-10 countries 
 # and their selected EPI value
 performerTable <- function(field, kpi_field, top_bottom) {
   dt <- countryExData[, c("Country", field), drop = FALSE]

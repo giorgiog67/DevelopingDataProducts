@@ -47,7 +47,11 @@ Three outputs are determined by above inputs selection:
 2. the table showing EPI values at region level, computed as average of the region member countries EPI's
 3. the top-10/bottom-10 countries table as based on selected EPI metric
 
-
 ## Shiny Application
 
-![World EPI](Snapshot3.png)
+```{r fig.width=8, fig.height=5, echo=FALSE}
+suppressPackageStartupMessages(library(png))
+suppressPackageStartupMessages(library(grid))
+img <- readPNG("Snapshot.png")
+grid.raster(img)
+```

@@ -1,6 +1,7 @@
-library(shiny)
-library(plotly)
-library(rworldmap)
+suppressPackageStartupMessages(library(shiny))
+suppressPackageStartupMessages(library(plotly))
+suppressPackageStartupMessages(library(rworldmap))
+suppressPackageStartupMessages(library(markdown))
 
 description <- c("International Standards Organization",
                  "Country Name",
@@ -83,32 +84,45 @@ description <- c("International Standards Organization",
                  "Industrial carbon intensity (2)",
                  "Emissions per electricity generation (2)")
 
+# not considering the raw data field
 choices_index <- c(1:55)
+
+# index of the fields we do not intend to show as selectable
 hidden_index <- c(1:4, 7, 13, 23, 24, 28, 31, 55)
+
+# resulting indexes
 choices_index <- setdiff(choices_index, hidden_index)
 
+# dataset columns to be considered for selection
 choices <- colnames(countryExData)[choices_index]
+
+# description of the selectable fields
 choices_verbose <- description[choices_index]
 
 region_types <- c("GEO3", "GEO3major", "IMAGE24", "GLOCAF", "Stern", "SRES", "SRESmajor", "GBD", "AVOIDname")
 
-shinyUI(fluidPage(
+shinyUI(
+  navbarPage("World EPI Visualizer",
+    tabPanel("Application",
+      fluidPage(
+        # Application title
+        titlePanel("World Environmental Performance Indexes"),
+        helpText("Select the environmental performance index,",
+                 "the country regions classification",
+                 "and the performers list of interest"),
   
-  # Application title
-  titlePanel("World Environmental Performance Indexes"),
-  helpText("Select the environmental performance index,",
-           "the country regions classification",
-           "and the performers list of interest"),
-  
-  # Sidebar with a slider input for number of bins 
-  fluidRow(
-      column(4, selectInput("kpi", "Performance Index", choices_verbose, selected = choices_verbose[1])),
-      column(4, selectInput("region_type", "Region Type", region_types, selected = region_types[1])),
-      column(4, radioButtons("top_bottom", "Best/Worst Performers",
-                             c("top-10" = "top10", "bottom-10" = "bottom10"))),
-      column(12, plotlyOutput("plot")),
-      column(6, tableOutput("table")),
-      column(6, tableOutput("performers"))
-    )
+        # user inputs and generated outputs 
+        fluidRow(
+          column(4, selectInput("kpi", "Environmental Performance Index", choices_verbose, selected = choices_verbose[1])),
+          column(4, selectInput("region_type", "Region Type", region_types, selected = region_types[1])),
+          column(4, radioButtons("top_bottom", "Best/Worst Performers",
+                                 c("top-10" = "top10", "bottom-10" = "bottom10"))),
+          column(12, plotlyOutput("plot")),
+          column(6, tableOutput("table")),
+          column(6, tableOutput("performers"))
+        )
+     )
+  ),
+    tabPanel("About", includeMarkdown("about.md"))
   )
 )
